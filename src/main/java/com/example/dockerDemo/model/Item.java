@@ -4,10 +4,7 @@ package com.example.dockerDemo.model;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.io.Serializable;
 
 
@@ -16,10 +13,10 @@ import java.io.Serializable;
 @Setter
 public class Item implements Serializable {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer numberId;
 
-    private String name;
+    private String itemName;
 
 
 }

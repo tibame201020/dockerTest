@@ -14,8 +14,8 @@ public class ItemRepo {
     private JdbcTemplate jdbcTemplate;
 
     public void insertItem() {
-        String sql = "insert into item values (?, ?)";
-        jdbcTemplate.update(sql, 1,"docker begin");
+        String sql = "insert into item (item_name) values (?)";
+        jdbcTemplate.update(sql, "docker begin");
     }
 
     public List<Map<String, Object>> getAllItem(){
