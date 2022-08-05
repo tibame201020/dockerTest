@@ -21,5 +21,13 @@ public class Controller {
         return itemRepo.getAllItem();
     }
 
+    @RequestMapping("update")
+    public List<Map<String, Object>> update() {
+        itemRepo.insertItem();
+        itemRepo.updateItem();
+
+        return itemRepo.getAllItem();
+    }
+
 
 }

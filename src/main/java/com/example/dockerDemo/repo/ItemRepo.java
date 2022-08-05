@@ -22,4 +22,9 @@ public class ItemRepo {
         String sql = "select * from item";
         return jdbcTemplate.queryForList(sql);
     }
+
+    public void updateItem() {
+        String sql = "update item set item_name=? where number_id=1";
+        jdbcTemplate.update(sql, "itemUpdate");
+    }
 }
