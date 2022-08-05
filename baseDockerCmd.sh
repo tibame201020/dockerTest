@@ -1,4 +1,11 @@
+echo cmd : $1
 
-echo "docker build -t imageName ."
-echo "docker run -d --rm --name Name -p outerport:innerport image"
+case $1 in
+	build)
+		echo "docker build -t imageName .";;
+	run)
+		echo "docker run -d --rm --name Name -p outerport:innerport image";;
+	*)
+		echo "";;
 
+	esac
