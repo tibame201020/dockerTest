@@ -1,11 +1,11 @@
 version: '3.7'
-#Network
+#network
 networks:
   app-network:
-#data
+#db data
 volumes:
   db-data:
-#services
+#service group
 services:
   #database
   app-db:
@@ -22,8 +22,13 @@ services:
     networks:
       app-network:
 
+  #backend server
   app-backend:
+    #wait for db up
+    depends_on:
+      - app-db
     image: springboottestimg
+    container_name: app-backend
     ports:
       - 1234:4321
     environment:
