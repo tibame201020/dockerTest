@@ -5,32 +5,32 @@ services:
   app-backend:
     #wait for db up
     depends_on:
-      - app-db
+      - app-database
     image: springboottestimg
+    restart: on-failure
     ports:
       - "8000-8999:4321"
     environment:
-      DATASOURCE_HOST: app-db
-      DATASOURCE_POST: 3306
-      DATASOURCE_NAME: testdb
+      DATASOURCE_HOST: app-database
+      DATASOURCE_PORT: 3306
+      DATASOURCE_NAME: demoDb
       DATASOURCE_USERNAME: root
-      DATASOURCE_PASSWORD: 1234
+      DATASOURCE_PASSWORD: 123456
     networks:
       backend2database:
 
   #database
-  app-db:
+  app-database:
     image: mysql:8.0.17
-    container_name: app-db
     restart: always
-    ports:
-      - "3306:3306"
+    expose:
+      - 3306
     volumes:
       - database-data:/data/mysql
     environment:
       MYSQL_ROOT_USERNAME: root
-      MYSQL_ROOT_PASSWORD: 1234
-      MYSQL_DATABASE: testdb
+      MYSQL_ROOT_PASSWORD: 123456
+      MYSQL_DATABASE: demoDb
     networks:
       backend2database:
 
